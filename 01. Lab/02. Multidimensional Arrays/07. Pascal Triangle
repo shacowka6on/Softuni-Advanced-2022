@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace Advanced
+{
+    class PascalTriangle 
+    {
+        static void Main(string[] args)
+        {
+            int height = int.Parse(Console.ReadLine());
+            long[][] triangle = new long[height][];
+            int currWidth = 1;
+            for (int row = 0; row < triangle.Length; row++)
+            {
+                triangle[row] = new long[currWidth];
+                long[] currRow = triangle[row];
+                currRow[0] = 1;
+                currRow[currRow.Length - 1] = 1;
+                currWidth++;
+                if (currRow.Length > 2)
+                {
+                    for (int i = 1; i < currRow.Length - 1; i++)
+                    {
+                        long[] previousRow = triangle[row - 1];
+                        long previousRowSum = previousRow[i] + previousRow[i - 1];
+                        currRow[i] = previousRowSum;
+                    }
+                }
+            }
+            foreach (long[] row in triangle)
+            {
+                Console.WriteLine(string.Join(" ", row));
+            }
+        }
+    }
+}
