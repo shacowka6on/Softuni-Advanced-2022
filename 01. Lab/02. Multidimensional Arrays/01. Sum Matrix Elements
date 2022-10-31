@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace Advanced
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*Console.ReadLine().Split($", ").Select(int.Parse).ToArray();*/
+            int[] size = Console.ReadLine().Split($", ").Select(int.Parse).ToArray();
+            int[,] matrix = new int[size[0], size[1]];
+
+            //rows = size[0], cols = size[1]
+            int sum = 0;
+            for (int r = 0; r < size[0]; r++)
+            {
+                int[] input = Console.ReadLine().Split($", ").Select(int.Parse).ToArray();
+                for (int c = 0; c < size[1]; c++)
+                {
+                    matrix[r, c] = input[c];
+                    sum += matrix[r, c];
+                }
+            }
+            Console.WriteLine(size[0]);
+            Console.WriteLine(size[1]);
+            Console.WriteLine(sum);
+        }
+    }
+}
