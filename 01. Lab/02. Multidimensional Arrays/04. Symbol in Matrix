@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace Advanced
+{
+    class Symbol
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            char[,] matrix = new char[n, n];
+            for (int rows = 0; rows < n; rows++)
+            {
+                string s = Console.ReadLine();
+                char[] symbol = s.ToCharArray();
+                for (int cols = 0; cols < n; cols++)
+                {
+                    matrix[rows, cols] = symbol[cols];
+                }
+            }
+            char req = char.Parse(Console.ReadLine());
+            for (int row = 0; row < n; row++)
+            {
+                for (int col = 0; col < n; col++)
+                {
+                    if (matrix[row, col] == req)
+                    {
+                        Console.WriteLine($"({row}, {col})");
+                        return;
+                    }
+                }
+            }
+            Console.WriteLine($"{req} does not occur in the matrix");
+        }
+    }
+}
